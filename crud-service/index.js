@@ -2,6 +2,11 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 import Routes from './server/route.js';
 import Connection from './database/db.js';
@@ -24,5 +29,11 @@ const PASSWORD = process.env.DB_PASSWORD;
 const PORT = process.env.PORT;
 
 Connection(USERNAME, PASSWORD);
+
+//static files
+app.use(express.static(path.join(__dirname, './crud-app/build')));
+app.get('*', function(req, res){
+    res.sendFile(path.join(__dirname, "./crud-app/build/index.html"));
+});
  
 app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
