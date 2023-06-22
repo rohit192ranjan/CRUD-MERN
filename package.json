@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "server": "nodemon index.js",
-    "client": "npm start --prefix D:/MERN-STACK/MERN-Stack-Projects-master/CRUD-Application/crud-app/",
+    "start": "node crud-service/index.js",
+    "server": "nodemon crud-service/index.js",
+    "client": "npm start --prefix crud-app",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
